@@ -1,0 +1,28 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $posts = $this->getPosts() ?>
+<?php if (count($posts) > 0): ?>
+	<div class="post-list">
+		<ul id="post-list">
+			<br />
+			<?php foreach($posts as $post): ?>
+				<li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?> <?php echo $post->getPostFormat() ?>">
+					<p>
+					<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->htmlEscape($post->getPostTitle()) ?>"><?php echo $this->htmlEscape($post->getPostTitle()) ?> - <?php echo $this->htmlEscape(preg_replace('/([A-Za-z]{3})([A-Za-z]+)/', '$1', $post->getPostDate())); ?></a>
+					</p>
+					<p>
+						<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->htmlEscape($post->getPostTitle()) ?>"><?php echo $post->getPostExcerpt(); ?></a>
+					</p>
+				</li>
+			<?php endforeach; ?>
+		</ul>
+		<script type="text/javascript">decorateList($('post-list'));</script>
+		<?php echo $this->getPagerHtml() ?>
+	</div>
+<?php endif; ?>

@@ -1,0 +1,150 @@
+
+Version: 2.8.48
+----------------
+Some code formatting.
+
+Version: 2.8.47
+----------------
+Moved $content_width into setup function.
+
+Version: 2.8.46
+----------------
+Deleted some unused code and Prefixed some variables.
+
+Version: 2.8.45
+----------------
+Prefixed some variables.
+
+Version: 2.8.44
+----------------
+CSS modifications.
+
+Version: 2.8.43
+----------------
+Deleted some unused code.
+
+Version: 2.8.42
+----------------
+Deleted some unused code.
+
+Version: 2.8.41
+----------------
+De enqueued jquery.
+
+Version: 2.8.40
+----------------
+Relocated some code.
+
+Version: 2.8.39
+----------------
+Deleted some unused code.
+
+Version: 2.8.38
+----------------
+Deleted some unused code.
+
+Version: 2.8.37
+----------------
+Modified widget sanitization function.
+
+Version: 2.8.36
+----------------
+Modified body class function.
+
+Version: 2.8.35
+----------------
+Added new skin.
+
+Version: 2.8.34
+----------------
+Changed title function.
+
+Version: 2.8.33
+----------------
+Added new skin.
+
+Version: 2.8.32
+----------------
+Added new skin.
+
+Version: 2.8.31
+----------------
+Added sanitization to ad widgets.
+
+Version: 2.8.30
+----------------
+Some css code refactoring.
+
+Version: 2.8.29.1
+----------------
+Some css code refactoring.
+
+Version: 2.8.27
+-----------------------------------------------
+Added new skin.
+
+Version: 2.8.26
+-----------------------------------------------
+Added new skin.
+
+Version: 2.8.25
+-----------------------------------------------
+Added new skin.
+
+Version: 2.8.24
+-----------------------------------------------
+Added new skin.
+
+Version: 2.8.23
+-----------------------------------------------
+CSS Modifications.
+
+Version: 2.8.22
+-----------------------------------------------
+Minor update to options framework, Using core selected and checked functions.
+
+Version: 2.8.21
+-----------------------------------------------
+Added new skin
+
+Version: 2.8.20
+-----------------------------------------------
+Added new skin
+
+Version: 2.8.19
+-----------------------------------------------
+Added new skin
+
+Version: 2.8.18
+-----------------------------------------------
+Added new skin
+
+Version: 2.8.17
+-----------------------------------------------
+Added new skin
+
+Version: 2.8.16
+-----------------------------------------------
+Added new skin
+
+Version: 2.8.15
+-----------------------------------------------
+Added new skin
+
+Version: 2.8.14
+-----------------------------------------------
+Added new skin
+
+Version: 2.8.13
+-----------------------------------------------
+Changed default header and screenshot.
+
+
+Version: 2.8.12
+-----------------------------------------------
+Added new skin
+
+
+Version: 2.8.11
+-----------------------------------------------
+Added new skin

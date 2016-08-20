@@ -1,0 +1,110 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Language switcher template
+ *
+ * @see Mage_Page_Block_Switch
+ */
+?>
+
+<!-- LANGUAGES BOF -->
+<?php
+$websites = Mage::app()->getWebsites();
+
+if(count($this->getGroups())>1): ?>
+<div class="store-switcher">
+    <label for="select-store"><?php echo $this->__('Select Store:') ?></label>
+    <select id="select-store" title="<?php echo $this->__('Select Store') ?>" onchange="location.href=this.value">
+    <?php /*foreach ($this->getStores() as $_store): ?>
+        <option value="<?php echo $_store->getUrl('') ?>"<?php if($_store->getId()==$this->getCurrentStoreId()): ?> selected="selected"<?php endif; ?>><?php echo $_store->getName() ?></option>
+    <?php endforeach;*/  ?>
+    <?php foreach ($this->getGroups() as $_group): ?>
+        <?php $_selected = ($_group->getId()==$this->getCurrentGroupId()) ? ' selected="selected"' : '' ?>
+        <option value="<?php echo $_group->getHomeUrl() ?>"<?php echo $_selected ?>><?php echo $this->htmlEscape($_group->getName()) ?></option>
+    <?php endforeach; ?>
+    </select>
+</div>
+<?php endif; ?>
+
+<?php if(count($this->getStores())>1): ?>
+<?php
+$stores = array();
+$_current = null;
+foreach ($this->getStores() as $_lang) {
+    $_selected = $_selected_option = '';
+    if ( ($_lang->getId() == $this->getCurrentStoreId()) ) {
+        $_current =  $_lang;
+        $_selected = ' class="selected"';
+        $_selected_option = ' selected="selected"';
+    }
+    $stores[] = '<li'. $_selected .'><a style="background-image:url(\''. $this->getSkinUrl('images/flags/'.$_lang->getLocaleCode().'.png') .'\');" href="'. $_lang->getCurrentUrl() .'">'. $this->htmlEscape($_lang->getName()) .'</a></li>';
+    $select_stores[] = '<option '.$_selected_option.' value="'. $_lang->getCurrentUrl() .'">'. $this->htmlEscape($_lang->getName()) .'</option>';
+}
+
+?>
+<div class="header-switch language-switch">
+    <span><?php echo $this->__('Your Language:') ?>
+        <span class="current"><?php echo $this->htmlEscape($_current->getName()); ?></span>
+    </span>
+	<div class="header-dropdown">
+        <ul><?php echo implode('', $stores); ?></ul>
+    </div>
+</div>
+<div class="language-select">
+    <span><?php echo $this->__('Your Language:') ?></span>
+	<select name="language_switch" onchange="window.location=this.value"><?php echo implode('', $select_stores); ?></select>
+</div>
+<?php endif; ?>
+<!-- LANGUAGES EOF -->
+<!--<div class="switch-locale">
+    Shipping to: <img src="/skin/frontend/shopper/default/images/flags/restworld.png" />
+</div>
+<div class="dialog-bg"></div>
+<div class="dialog-main test-dialog-main dialog-country-selector"><a class="dialog-close" href="#">close</a><h2 class="dialog-header">Country Selector</h2>        <div class="dialog-body">
+    <div id="modalContainer" class="country-selector test-modal-country-selector">
+        <form name="changeLocationForm" action="/" class="country-picker" method="GET"><input name="_dyncharset" value="UTF-8" type="hidden"><input name="_dynSessConf" value="4836029487250462156" type="hidden">
+            <input id="selectedLocale" name="/e2x/roadrunner/locale/CountryLanguageFormHandler.selectedLocale" value="en-us-gw" type="hidden"><input name="_D:/e2x/roadrunner/locale/CountryLanguageFormHandler.selectedLocale" value=" " type="hidden">
+            <span id="us" class="delivering-to WORLD-flag"></span>
+            <div class="lost-cart-warning test-change-country-warning-message">
+                <h3>Change country</h3>
+                <p>By changing your delivery country you will lose everything in your Cart and any Gift Lists created during this visit.</p>
+            </div>
+           
+            <ul class="locale-list">
+                <li>
+                    <a href="http://mmx.trunk.sparkmodel.com" class="WORLD-flag">Rest of World - English</a>
+                </li>
+            </ul>
+            <ul class="locale-list">
+                <li>
+                    <a href="http://japan.trunk.sparkmodel.com" class="JP-flag">Japan - English</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>-->

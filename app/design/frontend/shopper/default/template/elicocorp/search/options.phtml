@@ -1,0 +1,76 @@
+<?php
+$res = array();
+$pdt_ids = array();
+$fields = unserialize(SEARCH_FIELDS);
+foreach($fields as $field) {
+    $products = Mage::getModel('catalog/product')->getCollection()
+                                                 ->addAttributeToSelect($field);
+    if (isset($_POST['category']) and !empty($_POST['category']))  {
+        $category = Mage::getModel('catalog/category')->load((int)$_POST['category']);
+        $products->addCategoryFilter($category);
+    }
+    foreach($fields as $field2) {
+        if($field == $field2)
+            continue;
+        if(isset($_POST[$field2]) and !empty($_POST[$field2])) {
+	    if(in_array($field2, unserialize(SEARCH_FIELDS_MULTIPLE)) == True) {
+		$products->addAttributeToFilter(array(array('attribute' => $field2, 'eq' => $_POST[$field2]),
+                                array('attribute' => $field2, 'like' => '%,'.$_POST[$field2].'%'),
+                                array('attribute' => $field2, 'like' => '%'.$_POST[$field2].',%')));
+            } elseif(strpos($field2 ,'x_') == True) {
+                $products->addAttributeToFilter($field2, (int) $_POST[$field2]);
+	    } else {
+                $products->addAttributeToFilter($field2, array('eq' => $_POST[$field2]));
+            }
+        }
+    }
+
+    $method_name = explode('_', $field);
+    $method_name =  array_map('ucfirst', $method_name);
+    $method_name =  implode('', $method_name);
+    $attribute = $products->getResource()->getAttribute($field);
+    $values = array();
+    $res[$field]['default'] = '-- '. $this->__('All') .' '. $attribute->getFrontendLabel().'s --';
+    $attribute_model = Mage::getModel('eav/entity_attribute');
+    $pdt_ids = array();
+    foreach($products as $product) {
+	$pdt_ids[] = $product->getId();
+        if(in_array($field, unserialize(SEARCH_FIELDS_MULTIPLE))) {
+  
+            $source = Mage::getModel('catalog/product')->getResource()->getAttribute($field)->getSource();
+            $value = str_replace('"', '', call_user_func(array($product, 'get'.$method_name)));
+            $mvalues = explode(',', $value);
+            $i = 0;
+            if(count($mvalues) > 1) {
+               #foreach($mvalues as $v) { 
+               # if(!empty($v) and isset($product->getAttributeText($field)[$i])) {
+               #     $values[$v] = $product->getAttributeText($field)[$i];
+               # }
+               # $i++;
+              #}
+            } else {
+		if(!empty($value))
+                    $values[$value] = $product->getAttributeText($field);
+            }
+        }
+        else {
+            $value = $product->getAttributeText($field);
+	    $key = str_replace('"', '', call_user_func(array($product, 'get'.$method_name)));
+	    if(empty($value)) {
+                $value = $key;
+            }
+            if(empty($key))
+                continue;
+            if(in_array($key, $values)) {
+                continue;
+            }
+          
+            $values[$key] = $value;
+       }
+    }
+    asort($values);
+    $res[$field] +=  $values;
+}
+$_SESSION['temp_product_collection'] = $pdt_ids;
+echo json_encode($res);
+?>

@@ -1,0 +1,38 @@
+<?php
+$method_name = explode('_', $this->field_name);
+$method_name =  array_map('ucfirst', $method_name);
+$method_name =  implode('', $method_name);
+$products = Mage::getModel('catalog/product')->getCollection();
+$products->addAttributeToSelect($this->field_name)
+         ->groupByAttribute($this->field_name)
+         ->setOrder($this->field_name.' ASC')
+         ->load();
+$attribute = $products->getResource()->getAttribute($this->field_name);
+$values = array();
+if($this->field_name != 'x_mmx_model' and $this->field_name != 'model_year' and $this->field_name != 'race_edition_year'):
+?>
+<div class="input-box" style="clear:both;float:left;">
+    <label class="search_condition"><?php echo $attribute->getFrontendLabel();?></label>
+<?php
+endif;
+?>
+        <select data-default="-- <?php echo $this->__('All'), ' ', $attribute->getFrontendLabel().'s';
+                ?> --" class="ajax_field" name="<?php echo $this->field_name; ?>" id="<?php echo $this->field_name; ?>" <?php echo $multiple; ?>>
+                <option value=""></option>
+                <?php 
+                    $old_value = '';
+                    if(isset($_GET[$this->field_name])) {
+                        $old_value = html_entity_decode($_GET[$this->field_name]);
+                    }
+                ?>
+            <?php
+            if($old_value != '') { ?>
+                <option  selected="selected" value="<?php echo $old_value ?>">-- <?php echo $this->__('All'), ' ', $attribute->getFrontendLabel().'s'; ?> --</option>              
+            <?php }
+            ?>
+        </select>
+<?php
+if($this->field_name != 'custom_manufacturer' and $this->field_name != 'x_mmx_model' and $this->field_name != 'x_mmx_race_edition'):
+?>
+</div>
+<?php endif; ?>

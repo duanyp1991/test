@@ -1,0 +1,30 @@
+<?php 
+// $store_id = Mage::app()->getStore()->getId();
+$category = Mage::getModel('catalog/category')->loadByAttribute('url_key', 'search');
+// $category = Mage::getModel('catalog/category')->load($cat_id);
+$_helper    = $this->helper('catalog/output');
+?>
+<div class="std" style="margin-top:84px">
+	<h1><?php echo $category->getName(); ?></h1>	
+</div>
+<?php if($_description=$category->getDescription()): ?>
+    <div class="category-description std">
+        <?php echo $_helper->categoryAttribute($category, $_description, 'description') ?>
+    </div>
+<?php endif; ?>
+<?php
+ $_imgHtml   = '';
+ if ($_imgUrl = $category->getImageUrl()) {
+    $_imgHtml = '<img src="'.$_imgUrl.'" alt="'.$this->htmlEscape($category->getName()).'" title="'.$this->htmlEscape($category->getName()).'" />';
+    $_imgHtml = $_helper->categoryAttribute($category, $_imgHtml, 'image');
+  }
+?>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        jQuery('#category-img').show();
+        jQuery('#category-img').html('<?php echo $_imgHtml; ?>');
+        jQuery('#result').live('click', '.link-wishlist', function() { return false; });
+        jQuery('body').on('click', '.products-grid li.item a', function() {window.location = jQuery(this).attr('href')});
+    })
+</script>
+<div id="result"></div>

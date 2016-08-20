@@ -1,0 +1,91 @@
+<?php
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_MWISHLIST
+ * @copyright  Copyright (c) 2013 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+
+/** @var $this Itoris_MWishlist_Block_Popup */
+?>
+
+<?php
+$wishlists = $this->getWishlists();
+$mainWishlist = null;
+?>
+<div id="itoris-wishlist-popup-box" class="itoris-wishlist-popup-box-remove" style="display: none;">
+    <div id="itoris-wishlist-popup-mask"></div>
+    <div id="itoris-wishlist-popup" class="window">
+        <div id="itoris-wishlist-popup-loading" style="display: none;"></div>
+        <h4 id="itoris-wishlist-popup-radiostack-title" style="margin-left: 20px;margin-top: 10px"><?php echo $this->__('Add this product to your reservation list:')?></h4>
+
+        <div id="itoris-wishlist-radiostack">
+            <?php foreach ($wishlists as $wishlist): ?>
+                <div>
+                    <input type="radio" class="itoris-wishlist-radio" name="itoris-wishlist-radio" value="<?php echo $wishlist['multiwishlist_id'] ?>"
+                           id="itoris-wishlist-radio-<?php echo $wishlist['multiwishlist_id'] ?>"
+                        <?php if (!$wishlist['multiwishlist_is_main']): $mainWishlist = $wishlist['multiwishlist_id']; ?>
+                           checked="checked"
+                        <?php else: ?>
+                           style="display:none"
+                        <?php endif; ?>
+                           alt="<?php echo htmlentities($this->__($wishlist['multiwishlist_name'])) ?>"
+                        />
+                    <?php if ($wishlist['multiwishlist_is_main']): ?>
+                    <label style="display:none" for="itoris-wishlist-radio-<?php echo $wishlist['multiwishlist_id'] ?>"><?php echo $this->__('Add to wishlist.'); ?></label>
+                    <?php else: ?>
+                    <label for="itoris-wishlist-radio-<?php echo $wishlist['multiwishlist_id'] ?>"><?php echo $this->__('Reserve it and purchase it once available.'); ?></label>
+                    <br/>
+                    <label for="itoris-wishlist-radiostack-qty-label"><?php echo $this->__('Qty:'); ?></label>
+                    <input type="text" name="itoris-wishlist-radiostack-textqty" value="1" id="itoris-wishlist-radiostack-textqty" />  
+                    <?php endif; ?>
+                </div>
+            <?php endforeach ?>
+        </div>
+        <h4 id="itoris-wishlist-popup-text-qty-title" style="margin-left: 20px;margin-top: 10px" style="display: none;"><?php echo $this->__('This product is <strong>already</strong> in your reservation list. Please input the new total quantity.'); ?></h4>
+        <div id="itoris-wishlist-text-qty" style="display:none;">
+                <div>
+                	<label for="itoris-wishlist-qty-label"><?php echo $this->__('Qty:'); ?></label>
+                    <input type="text" name="itoris-wishlist-textqty" value="" id="itoris-wishlist-textqty" />
+                </div>
+        </div>
+        <div id="itoris-wishlist-popup-buttons">
+	    <button type="button" title="<?php echo $this->__('Update') ?>" id="itoris-wishlist-button-update-qty" class="itoris-wishlist-button-update-qty button" style="display:none;">
+                <span><span><?php echo $this->__('Update') ?>
+            </button>
+            <button type="button" title="<?php echo $this->__('Select') ?>" id="itoris-wishlist-button-select" class="itoris-wishlist-button-select button">
+                <span><span><?php echo $this->__('Select') ?>
+            </button>
+            <button type="button" title="<?php echo $this->__('Cancel') ?>" class="itoris-wishlist-button-cancel button">
+                <span><span><?php echo $this->__('Cancel') ?></span></span>
+            </button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        itorisWishlistPopup = new Itoris.WishlistPopup(<?php echo $this->getConfigJson() ?>);
+        Event.observe(document, 'dom:loaded', function(){
+            var body = $$('body')[0];
+            if (body) {
+                body.appendChild($('itoris-wishlist-popup-box'));
+            }
+            itorisWishlistPopup.mainWishlist = '<?php echo $mainWishlist ?>'
+        });
+    </script>
+</div>

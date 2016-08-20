@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <ElicoCorp_OpenERPConnector>
+            <version>0.0.2</version>
+        </ElicoCorp_OpenERPConnector>
+    </modules>
+    <frontend>
+       <routers>
+            <openerp>
+                <use>standard</use>
+                <args>
+                    <module>ElicoCorp_OpenERPConnector</module>
+                    <frontName>openerp</frontName>
+                </args>
+            </openerp>
+       </routers>
+       <!-- <layout>
+            <updates>
+                <openerp>
+                    <file>atwix_search.xml</file>
+                </openerp>
+            </updates>
+        </layout> -->
+    </frontend>
+    <global>
+        <models>
+            <openerp>
+                <class>ElicoCorp_OpenERPConnector_Model</class>
+                <resourceModel>openerpconnector_mysql4</resourceModel>
+            </openerp>
+        </models>
+         <helpers>
+            <openerp>
+                <class>ElicoCorp_OpenERPConnector_Helper</class>
+            </openerp>
+        </helpers>
+        <blocks>
+            <openerp>
+                <class>ElicoCorp_OpenERPConnector_Block</class>
+            </openerp>
+            <adminhtml>
+                  <openerp>
+                      <class>ElicoCorp_OpenERPConnector_Block</class>
+                  </openerp>
+            </adminhtml>
+        </blocks>
+
+        <resources>
+              <elicocorp_openerpconnector_setup>
+                  <setup>
+                      <module>ElicoCorp_OpenERPConnector</module>
+                      <class>Mage_Sales_Model_Mysql4_Setup</class>
+                  </setup>
+                  <connection>
+                      <use>core_setup</use>
+                  </connection>
+              </elicocorp_openerpconnector_setup>
+              <elicocorp_openerpconnector_write>
+                  <connection>
+                      <use>core_write</use>
+                  </connection>
+              </elicocorp_openerpconnector_write>
+              <elicocorp_openerpconnector_read>
+                  <connection>
+                      <use>core_read</use>
+                  </connection>
+              </elicocorp_openerpconnector_read>
+          </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <use>admin</use>
+                <args>
+                    <modules>
+                        <ElicoCorp_OpenERPConnector after="Mage_Adminhtml_Sales">ElicoCorp_OpenERPConnector_Adminhtml</ElicoCorp_OpenERPConnector>
+                    </modules>
+                </args>
+            </adminhtml>    
+        </routers>
+    </admin>
+</config>

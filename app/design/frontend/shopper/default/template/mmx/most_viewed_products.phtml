@@ -1,0 +1,29 @@
+<?php 
+$products = Mage::getResourceModel('reports/product_collection')
+            ->addAttributeToSelect(array('name', 'sku'))
+            ->setStoreId($storeId)
+            ->addStoreFilter($storeId)
+            ->addViewsCount()
+            ->setPageSize(10)
+            ->setCurPage(1);
+?>
+<ul class="slides">
+<?php
+foreach($products as $_product): ?>
+	<li>
+		<p class="mmx_slider">
+            <strong><?php echo $_product->getSku(); ?></strong>
+            <?php echo $_product->getName(); ?>
+        </p>
+		<?php 
+		$imgX = 230;
+		$imgY = 230;
+		?>
+		<img src="<?php echo $_product->getCustomImageUrl(); ?>" width="<?php echo $imgX; ?>" height="<?php echo $imgY; ?>" />
+		<a class="button button_white" href="<?php echo $_product->getProductUrl(); ?>">
+			<span><span>Learn more</span></span>
+		</a>
+
+	</li>
+<?php endforeach; ?>
+</ul>

@@ -1,0 +1,821 @@
+/*-------------------------------------------------*/
+/* Colors */
+/*-------------------------------------------------*/
+
+body{ color:#000; }
+
+a,a:visited,a:focus{ color:#000; }
+
+input, select, textarea{color:#7a7a7a;}
+input[type=text], input[type=password], select, textarea{border:3px solid #c5c5c5;}
+
+/* General settings */
+#wrapper_one{ }
+#wrapper_two{ }
+#wrapper_four{ }
+
+.logo_title a{
+	color:#fff;
+}
+
+.logo_desc {
+	color:#fff;
+}
+.logo_desc a{
+	color:#fff;
+}
+
+#menu{
+	background:url(images/marn/menu_bg.png);
+}
+.current-menu-item, .current_page_item {
+	Background:#424242 !important;	
+}
+
+#menu select {
+	border:1px solid #000;
+	color:#000;
+}
+
+#inner_content_section {
+	background:url(images/marn/innercont.png) repeat;	
+}
+#featured_section_wilto {
+	background:url(images/marn/wilto.jpg) no-repeat;	
+}
+.carousel-next {
+	width:63px;
+	height:136px;
+	background:url(images/marn/anything-arrows-next.png);
+}
+.carousel-prev {
+	width:63px;
+	height:136px;
+	background:url(images/marn/anything-arrows-prev.png);		
+}
+.wrsubtexth2 h2 a {
+	color:#fff;
+}
+.wrtext p {
+	color:#fff;
+}
+.wrtext p a {
+	background:#424242 !important;
+	color:#fff;
+}
+
+#sidebar_search_social {
+	background:url(images/marn/ten.png);
+}
+
+#sidebar_facebook {
+	background:url(images/sidebar_facebook.png) no-repeat center right;
+	border-bottom:1px solid #a7a179;
+	
+}
+
+#feed_social {
+	background:url(images/marn/ten.png);
+}
+
+
+#sidebar_ads_container {
+	background:url(images/marn/ten.png);	
+}
+
+#sidebar {
+	background:url(images/marn/ten.png);
+}
+
+#sidebar_facebook p a{
+	color:#000;
+}
+#sidebar_twitter {
+	background:url(images/sidebar_twitter.png) no-repeat center right;
+	border-bottom:1px solid #a7a179;	
+}
+#sidebar_twitter p a{
+	color:#000;
+}
+#twitter_update_list_1985 p{
+	color:#939493;	
+}
+#twitter_update_list_1985 p a{
+	color:#939493;
+}
+#twitter_update_list_1985 p a.twittertime {
+	color:#000;
+}
+#twitter_update_list_1985 p a.twittertime span{
+	color:#6DCFF6;
+}
+
+
+/* pro */
+.ta_meta_container {
+	background:url(images/marn/ten.png);
+	border-bottom:dashed 0 #a7a179;
+}
+.actual_post_title_page h2{
+	color:#000;
+}
+.actual_post_title h2{
+	color:#000;
+}
+.actual_post_title h2 a{
+	color:#000;
+}
+.actual_post_title h2 a:visited{
+	color:#000;
+}
+.actual_post_author {
+	border:1px solid #a7a179;
+	border-right:0;
+	border-left:0;
+}
+.actual_post_ratings {
+	border:1px solid #a7a179;
+	border-right:0;
+	border-left:0;
+	border-bottom:0;	
+}
+.actual_post_comments {
+	color:#000;
+}
+.metadata{
+	border-bottom:1px solid #a7a179;
+}
+.metadata .bot{
+	border-bottom:1px solid #a7a179;
+}
+.metadata .label{
+	color:#000;
+}
+.postmetadata{
+	background:#e5e5e5;
+}
+.post_author_bio {
+	background:url(images/marn/ten.png);
+    border-bottom: 0 dashed #a7a179;
+	border-top: 0 dashed #a7a179;		
+}
+.authors_website {
+	background:url(images/authors_website.png) no-repeat;
+}
+.authors_website p{
+	color:#050505;
+}
+.authors_twitter {
+	background:url(images/authors_twitter.png) no-repeat;
+}
+.authors_twitter p{
+	color:#050505;
+}
+.authors_facebook {
+	background:url(images/authors_facebook.png) no-repeat;
+}
+.authors_facebook p{
+	color:#050505;
+}
+.single_newsletter_heading {
+	background:url(images/single_rss.png) right center no-repeat;
+}
+.single_newsletter_heading p{
+	color:#050505;
+}
+.single_social_share {
+	background: #a7a179;
+    border-bottom: 0 dashed #a7a179;
+	border-top: 0 dashed #a7a179;
+}
+.single_social_share_heading {
+	background:#E6E6E6;
+}
+.single_social_share_heading p{
+	color:#000;
+}
+.single_np {
+    background:url(images/marn/ten.png);
+    border-bottom: 0 dashed #a7a179;
+    border-top: 0 dashed #a7a179;
+}
+.single_np_prev_np {
+	color:#000;
+}
+.single_np_next_np {
+	color:#000;
+}
+.single_related_title {
+	background:#2F2F2F;
+	border-top: 0 dashed #3c3c3c;
+}
+.single_related_title p{
+	color:#000;
+}
+.single_related_posts {		
+	background:#363636;
+	border-bottom: 0 dashed #3C3C3C;	
+}
+.related_post_title a{
+	color:#F26521;
+}
+.no_comm_single p{
+	color:#000;	
+}
+
+
+/* Full width page starts */
+#main_content_section_full {
+	background:url(images/marn/ten.png);		
+}
+
+#main_content_section_search {
+	background:url(images/marn/ten.png);	
+}
+
+#main_content_section_search_title {
+	background:url(images/marn/ten.png);	
+}
+
+.main_content_section_search_title {
+	color:rgba(255,0,0,1);
+}
+.fouroh h2 {
+	color:rgba(0,0,0,1);	
+}
+.fouroh p {
+	color:rgba(0,0,0,1);	
+}
+.ta_meta_container_full {
+	background:url(images/marn/ten.png);
+	border-bottom:dashed 0 #a7a179;
+}
+.actual_post_title_page_full h2{
+	color:#000;
+}
+/* Full width page ends */
+
+
+/* entry */
+
+
+.entry .more-link{
+	color:#000;
+}
+.entry .more-link span{
+	color:#F26522;
+	border-bottom: 1px solid #F26522;
+}
+
+.entry .wp-caption{ background:#a7a179;}
+.entry .wp-caption img{ background:none; border:0; }
+
+.entry table{
+	border: 1px solid #a7a179;
+}
+.entry table td, .entry table th{
+	border: 1px solid #a7a179;
+}
+.entry table th{
+	background: #a7a179;
+}
+
+/* Various Tags & Classes */
+
+.entry acronym, .entry abbr{
+	border-bottom: 1px dashed #dfcfba;
+}
+.entry blockquote{
+	border-left:13px solid #a7a179;
+}
+.entry blockquote blockquote{
+	border-left:13px solid #6dcff6;
+}
+blockquote cite {
+	color: #666;
+}
+pre {
+	background: #a7a179;
+}
+abbr, acronym, dfn {
+	border-bottom: 1px dotted #666;
+}
+ins {
+	background: #a7a179;
+}
+/* Respond */
+
+#commentform #submit{
+	background:#000;
+	border:0;
+	color:#000;
+}
+/* Comments*/
+
+.commentlist li.comment{
+	background:url(images/comments_bg.png) repeat;
+}
+.commentlist li.trackback{
+	background:url(images/comments_bg.png) repeat;
+}
+.commentlist li.pingback{
+	background:url(images/comments_bg.png) repeat;
+}
+.commentlist .reply a{
+	background:#000;
+	color:#fff;
+}
+.commentlist .reply a:hover{
+	background:#333;
+}
+.comment-author img{
+	border:3px solid #868686;
+}
+.commentlist .fn{
+	color:#000;
+}
+.commentlist .fn a{
+	color:#000;
+
+}
+.commentlist .comment-author-admin .fn, .commentlist .comment-author-admin .fn a{
+	color:#000;
+}
+.pagination2 span {
+	color:#fff;
+}
+.pagination2 a {
+	color:#000;
+}
+/* pagination */
+.pagination{
+	background:none;
+	border:1px solid #a7a179;
+}
+.pagination .pages{
+	color:#000;
+	background:#363636;
+}
+.pagination a:hover, .pagination .current{
+	color:#000;
+	background:#a7a179;
+}
+
+/* Sidebar */
+
+.sidebar_widget_top {
+	background:url(images/marn/ten.png);
+}
+.sidebar_widget_bottom {
+	background:url(images/marn/ten.png);
+}
+.widget {
+	background:url(images/marn/ten.png);
+	color:#000;
+}
+.widgettitle {
+	background:url(images/marn/ten.png);
+	color:#000;
+}
+.widget ul li{
+	border-bottom:1px solid #a7a179;
+}
+.widget ul li a{
+	color:#000;
+}
+.widget ul li a:visited, .widget ul li a:focus{
+	color:#000 !important;
+}
+.widget ul ul a{
+	color:#000;
+}
+.widget ul li ul li{
+	border: 0;
+}
+.widget .last{
+	background:none;
+}
+.textwidget p{ color:#000; }
+/* Calendar */
+#wp-calendar caption{color:#000;}
+#wp-calendar th,#wp-calendar td{color:#000;}
+#wp-calendar td{background:transparent;}
+#wp-calendar a{color:#000;}
+/* tag cloud */
+.tagcloud a{
+	color:#000;
+}
+.widget_poll li{
+	border:0;
+	background: none;
+}
+.widget_poll li a{
+color:#000;
+}
+.wp-polls ul li{
+	color:#000;	
+}
+.wp-polls p strong{
+	color:#000;	
+}
+.wp-polls p a{
+	color:#000;	
+}
+.wp-polls .Buttons {
+	background:#000 !important;
+	border:0 !important;
+}
+.widget img {
+    height: auto;
+    max-width: 90%;
+	margin:10px 5%;
+}
+.widget select {
+    width: 90%;
+	border:0;
+	margin:10px 5%;
+}
+/* pro */
+/* Sidebar */
+
+
+#footer_section .footerp{
+	color:#fff;
+}
+#footer_section .footerp a{
+	color:#fff;
+}
+#footer_section .footercredit {
+	color:#fff;
+}
+#footer_section .footercredit a{
+	color:#fff;
+}
+.footerp .seach_section {
+	background:none !important;
+}
+
+
+
+
+
+
+/* ==================================================================
+    Secure and Accessible PHP Contact Form v.2.0WP FIXED width
+    ACCESSITES.CSS made by Mike Cherim - http://green-beast.com 
+   Designed and built to work with the Accessites WordPress theme
+================================================================== */
+
+#gb_form {
+  background : transparent;
+}
+
+fieldset { 
+  border : 0;
+}
+
+#gb_form legend#mainlegend { 
+  background:url(images/dotted_grey.gif) repeat-x bottom;
+}
+
+#gb_form_div .formhead small a {
+  background-image : none;
+}
+
+#gb_form_div .main_formhead, #gb_form_div .formhead {
+  color : #4c4c4c;
+}
+
+#gb_form_div input.short, #gb_form_div input.med, #gb_form_div select.med, #gb_form_div textarea.textbox, #gb_form_div textarea { 
+  border : 5px solid #383838;
+  background-color : #f3f3f3;
+}
+
+#gb_form_div input.checkbox {
+  background : transparent;
+}
+
+#gb_form_div input.button {
+	background:#000;
+	border-right:1px solid #000;
+	color:#000;
+}
+
+#gb_form_div small.whythis a span{ 
+  background:#000;
+
+  color : #f5f5f5;
+}
+#gb_form_div small.whythis a:hover span{ 
+  background:#000;
+  border:1px solid #fff;
+}
+
+#gb_form_div span.items {
+  color : #339999;
+}
+
+.wpcf7-text {
+	border: 5px solid #a7a179 !important;
+	background:url(images/marn/ten.png);	
+}
+.wpcf7-email {
+	border: 5px solid #a7a179 !important;
+	background:url(images/marn/ten.png);	
+}
+.wpcf7-quiz {
+	border: 5px solid #a7a179 !important;
+	background:url(images/marn/ten.png);
+}
+.wpcf7-textarea {
+	border: 5px solid #a7a179 !important;
+	background:url(images/marn/ten.png);
+}
+.wpcf7-file{
+	border: 5px solid #a7a179 !important;
+	background:url(images/marn/ten.png);
+}
+.wpcf7-submit {
+	background:#000;
+	border:0;
+	color:#000;
+}
+
+/* Mag Lite starts here */
+
+
+
+
+.mag_two_post_title{
+	border-bottom: 1px solid #a7a179;	
+
+}
+.mag_two_post_title h2 a{
+	color:#000;
+}
+.mag_two_post_ratings{
+	border-bottom: 1px solid #a7a179;	
+}
+.mag_two_post_thumb {
+	border:0px solid #a7a179;
+	background:#D4D7D1;
+}
+
+/* Mag Lite ends here */
+
+/* Mag starts here */
+.mag_post_title{
+	border-bottom: 1px solid #a7a179;		
+}
+.mag_post_title h2 a{
+	color:#000;
+}
+.mag_post_ratings{
+	border-bottom: 1px solid #a7a179;	
+}
+.mag_post_ratings_normal{
+	border-top: 1px solid #a7a179;		
+}
+.mag_post_thumb {
+	border:1px solid #a7a179;
+	background:#D4D7D1;
+}
+
+/* Mag ends here */
+
+/* pro */
+
+#mag_heading p{
+	color:#000;
+}
+.titlemag h2{
+	border-bottom:1px solid #a7a179;
+	color:#000;	
+}
+.titlemag h2 a{
+	color:#000;
+}
+.metadatamag{
+	color:#000;
+	border-bottom:1px solid #a7a179;
+}
+.excerpt_mag{
+	color:#000;
+}
+/* Pro Sidebar starts here */
+
+	ul.dropdown li {
+	 color: #fff;
+	}
+
+	ul.dropdown li.hover,
+	ul.dropdown li:hover,
+	ul.dropdown li.on {
+	 background-color:#424242;
+	}
+
+	ul.dropdown a:link,
+	ul.dropdown a:visited	{ color: #fff; }
+	ul.dropdown a:hover		{ color: #fff; }
+	ul.dropdown a:active	{ color: #fff; }
+
+	ul.dropdown li ul li {
+	 background-color:#424242;
+	}
+
+	ul.dropdown li ul li.hover,
+	ul.dropdown li ul li:hover,
+	ul.dropdown li ul li.on {
+	 background-color:#424242;
+	}	
+	
+	
+.mag_post_excerpt_more{
+	color:#000;
+	background:url(images/marn/ten.png);
+}
+.mag_post_excerpt_more a{
+	color:#000;	
+}
+
+/* Mobile First */
+#header_social_cont {
+	background:#0c0c0c url(images/header_social_cont.png) repeat-x top;
+}
+.header_search_cont .seach_section .searchtext {
+	background:none;
+}
+.header_search_cont .seach_section .text {
+	border:none;
+}
+.header_search_cont .seach_section .searchsub {
+	border:0px;
+}
+#Main_nav .selected a, #nav2 .selected a { color: red }
+
+.mag_category_column_vertical{
+	background:url(images/marn/ten.png);
+}
+.mag_category_column_vertical_odd{
+	background:url(images/marn/ten.png);
+}
+
+#main_content_section_maglite {
+	background:url(images/marn/ten.png);
+}
+#main_content_section_mag {
+	background:#a7a179;
+}
+
+#main_content_section {
+	background:#a7a179;	
+}
+
+.mag_category_column{
+	background:#3C3C3C;
+}
+
+.seach_section .searchtext{
+	background:#a7a179;
+}
+
+.seach_section .text{
+	color:#000;
+	border:0px;
+	background:none;
+}
+
+.seach_section .searchsub{
+	background:#000;
+}
+
+
+.seach_section .submit{
+	color:#ffffff;
+	background:none;
+	border:0px;	
+}
+
+.widget .seach_section .searchtext{
+	background:url(images/marn/ten.png);
+}
+
+.widget .seach_section .text{
+	background:none;
+	color:#000;
+	border:0;
+}
+
+.widget .seach_section .searchsub{
+	background:#000;	
+}
+
+.widget .seach_section .submit{
+	color:#ffffff;
+	border:0;
+}
+
+#footer_section {
+	background:url(images/marn/menu_bg.png);
+}
+
+.bottomfooterwidgety{
+	color:#000;	
+}
+.single_np_prev {
+	background:url(images/single_np_prev.png) left center no-repeat;	
+}
+.single_np_next {
+	background:url(images/single_np_next.png) right center no-repeat;	
+}
+.gallery a img {
+	border: none;
+}
+
+dl.gallery-item img {
+	background: #fff;
+	border: 1px solid #eee;
+}
+
+
+
+
+.mag_category_column_vertical{
+	background:#3C3C3C;
+}
+
+.single_np_prev {
+	background:url(images/single_np_prev.png) left center no-repeat;	
+}
+
+.single_np_next {
+	background:url(images/single_np_next.png) right center no-repeat;	
+}	
+
+dl.gallery-item img {
+	background: #fff;
+	border: 1px solid #eee;
+}
+
+.header_search_cont fieldset{
+	background:#2f2f2f;	
+}
+
+.header_search_cont .text{
+	background:none;
+	color:#878786;
+}
+
+.header_search_cont .searchsub{
+	background:#000;
+}
+.header_search_cont .submit{
+	color:#ffffff;
+	background:none;
+	border:0px;
+}
+#content_section {
+	background:url(images/content_section.png) repeat-x;
+}
+#main_content_section_maglite {
+	background:url(images/marn/ten.png);
+}
+#main_content_section_mag {
+	background:url(images/marn/ten.png);
+}
+
+#main_content_section {
+	background:url(images/marn/ten.png);	
+}
+.mag_category_column_vertical{
+	background:#3C3C3C;
+}
+
+.single_np_prev {
+	background:url(images/single_np_prev.png) left center no-repeat;	
+}
+
+.single_np_next {
+	background:url(images/single_np_next.png) right center no-repeat;	
+}
+
+dl.gallery-item img {
+	background: #fff;
+	border: 1px solid #eee;
+}
+.archiveheading {
+	border-bottom:40px solid #85b282;
+}
+.widget select {
+	background:#000;
+	border:0;
+}
+.widget .current-menu-item, .widget .current_page_item {
+	background:none !important;	
+}
+#commentform input[type=text] {
+	border-color:#a7a179;
+}
+#commentform textarea {
+	border-color:#a7a179;
+}

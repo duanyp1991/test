@@ -1,0 +1,119 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+echo $this->getChildHtml('slideshow');
+$config = Mage::getStoreConfig('shoppersettings/social', Mage::app()->getStore()->getId());
+$appearance = Mage::getStoreConfig('shoppersettings/appearance', Mage::app()->getStore()->getId());
+$route = Mage::app()->getFrontController()->getRequest()->getRouteName();
+$action = Mage::app()->getFrontController()->getRequest()->getActionName();
+$in_china = false;
+try {
+ if(geoip_country_code3_by_name($_SERVER['REMOTE_ADDR']) == 'CHN') {
+        $in_china = true;
+    }
+} catch(Exception $e) {
+    $in_china = false;
+}
+?>
+<!-- footer BOF -->
+<div class="footer-container">
+    <?php if ( !($route == 'customer' && ($action == 'login' || $action == 'forgotpassword' || $action == 'create')) ) : ?>
+    <div class="footer-banners">
+        <?php $cms_block = Mage::getModel('cms/block')
+            ->setStoreId( Mage::app()->getStore()->getId() )
+            ->load('shopper_footer_banners');
+        if($cms_block->getIsActive()) {
+            echo $this->getLayout()->createBlock('cms/block')->setBlockId('shopper_footer_banners')->toHtml();
+        }
+        ?>
+    </div>
+    <div class="footer-info">
+        <div class="row clearfix facebook">
+            <div class="grid_3">
+                <h4><?php echo $this->__('Newsletters');?></h4>
+                <div class="block-content">
+                    <?php echo $this->getChildHtml('recent_posts_footer'); ?>
+                </div>
+            </div>
+            <div class="grid_3 information">
+                <h4><?php echo $this->__('Trade');?></h4>
+                <div class="block-content clearfix">
+                   <ul>
+                       <li>
+                        <a href="/customer/account/login/"><?php echo $this->__('Log In'); ?></a>
+                       </li>
+                   </ul>             
+                </div>
+            </div>
+            <div class="grid_3 information">
+                <?php $cms_block = Mage::getModel('cms/block')
+                    ->setStoreId( Mage::app()->getStore()->getId() )
+                    ->load('shopper_footer_information');
+                if($cms_block->getIsActive()) {
+                    echo $this->getLayout()->createBlock('cms/block')->setBlockId('shopper_footer_information')->toHtml();
+                }
+                if(!$in_china) { ?>
+                    <ul>
+                        <li><span><a href="http://facebook.sparkmodel.com">Facebook</a></span></li>
+                        <!--<li>Twitter</li>-->
+                    </ul>
+                <?php }
+                ?>
+            </div>
+            <div class="grid_3">
+                <?php $cms_block = Mage::getModel('cms/block')
+                    ->setStoreId( Mage::app()->getStore()->getId() )
+                    ->load('shopper_footer_contact');
+                if($cms_block->getIsActive()) {
+                    if(Mage::getSingleton('customer/session')->isLoggedIn()):
+                        echo $this->getLayout()->createBlock('cms/block')->setBlockId('shopper_footer_contact')->toHtml();
+                    else:
+                        echo preg_replace('/([a-zA-Z0-9_.+-]+)@([a-zA-Z_-]+)\.([a-zA-Z0-9\.]{2,8})/i', '', $this->getLayout()->createBlock('cms/block')->setBlockId('shopper_footer_contact')->toHtml());
+                    endif;
+                }
+                ?>
+            </div>
+
+        </div>
+    </div>
+    <?php endif; // ( !($route == 'customer' && $action == 'login') ) : ?>
+    <footer class="row clearfix">
+        <div class="grid_6">
+        <address>
+            <?php echo preg_replace('/<year([ ]*)\/>/i', date('Y'), $this->getCopyright()) ?>
+        </address>
+        </div>
+        <div class="grid_6">
+            <?php echo $this->getChildHtml('shopper_footer_links'); ?>
+        </div>
+    </footer>
+    <div class="cookie-container">
+	<div class="cookie-text">
+<?php echo $this->__('We use cookies to ensure that we give you the best experience on our website. If you continue without changing your settings, we\'ll assume that you are happy to receive all cookies from this website. If you would like to change your preferences you may do so by following the instructions <a href="http://www.aboutcookies.org/Default.aspx?page=1">here</a>');?>
+          <a class="cookie-close">X</a><br />
+        </div>
+    </div>
+</div>
+<!-- footer EOF -->

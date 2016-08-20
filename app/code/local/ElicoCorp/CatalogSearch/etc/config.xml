@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+         <ElicoCorp_CatalogSearch>
+            <version>0.0.1</version>
+        </ElicoCorp_CatalogSearch>
+    </modules>
+    <global>
+        <models>
+            <catalogsearch>
+                <rewrite>
+                    <advanced>ElicoCorp_CatalogSearch_Model_Advanced</advanced>
+                </rewrite>
+            </catalogsearch>
+        </models>
+        <blocks>
+            <catalogsearch>
+                <rewrite>
+                    <advanced_form>ElicoCorp_CatalogSearch_Block_Advanced_Form</advanced_form>
+                </rewrite>
+            </catalogsearch>
+        </blocks>
+   </global>
+</config>

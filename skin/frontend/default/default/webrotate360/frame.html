@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+<head>
+<link type="text/css" rel="stylesheet" href="imagerotator/html/css/basic.css"/>
+<script type="text/javascript" src="imagerotator/html/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="imagerotator/html/js/imagerotator.js"></script>
+
+<style type= "text/css">
+
+body
+{
+    background: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+</style>
+
+<script language="javascript" type="text/javascript">
+    function startFrame360Viewer()
+    {
+        var _360IFrameParams  = new parent.WR360IFrameParams();
+
+        var curWidth  = jQuery("#wr360frame_id", window.parent.document).width();
+        var curHeight = jQuery("#wr360frame_id", window.parent.document).height();
+
+        jQuery("#frame_content").css("width",  curWidth + "px");
+        jQuery("#frame_content").css("height", curHeight + "px");
+
+        _imageRotator.settings.configFileURL   = _360IFrameParams.configFileURL;;
+        _imageRotator.licenseFileURL           = _360IFrameParams.licensePath;
+        _imageRotator.settings.rootPath        = _360IFrameParams.rootPath;
+        _imageRotator.settings.graphicsPath    = _360IFrameParams.graphicsPath;
+        _imageRotator.settings.viewWidthJQFix  = parseInt(curWidth);
+        _imageRotator.settings.viewHeightJQFix = parseInt(curHeight);
+
+        _imageRotator.runImageRotator("wr360PlayerId");
+    }
+</script>
+
+</head>
+
+<body onload="setTimeout('startFrame360Viewer()', 200);">
+
+<div id="frame_content">
+    <div id="wr360PlayerId" class="wr360_player">
+    </div>
+</div>
+
+</body>
+</html>

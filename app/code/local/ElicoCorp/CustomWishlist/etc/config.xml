@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<ElicoCorp_CustomWishlist>
+			<version>0.1.0</version>
+		</ElicoCorp_CustomWishlist>
+	</modules>
+	<admin>
+		<routers>
+			<customwishlist>
+				<use>admin</use>
+				<args>
+					<module>ElicoCorp_CustomWishlist</module>
+					<frontName>customwishlist</frontName>
+				</args>
+			</customwishlist>
+		</routers>
+	</admin>
+	<adminhtml>
+		<menu>
+			<customwishlist module="customwishlist">
+				<title>Wishlist</title>
+				<sort_order>9999</sort_order>
+				<children>
+					<wishlist module="customwishlist">
+						<title>Overview</title>
+						<action>customwishlist/adminhtml_wishlist</action>
+					</wishlist>
+				</children>
+			</customwishlist>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<customwishlist module="customwishlist">
+							<title>CustomWishlist</title>
+							<sort_order>9999</sort_order>
+							<children>
+								<wishlist>
+									<title>Overview</title>
+								</wishlist>
+							</children>
+						</customwishlist>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<customwishlist>
+					<file>customwishlist.xml</file>
+				</customwishlist>
+			</updates>
+		</layout>
+	</adminhtml>
+	<global>
+		<helpers>
+			<customwishlist>
+				<class>ElicoCorp_CustomWishlist_Helper</class>
+			</customwishlist>
+		</helpers>
+		<blocks>
+			<customwishlist>
+				<class>ElicoCorp_CustomWishlist_Block</class>
+			</customwishlist>
+		</blocks>
+	</global>
+</config>

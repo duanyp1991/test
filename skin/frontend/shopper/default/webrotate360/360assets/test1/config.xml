@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<config>
+  <settings>
+    <preloader image="images/Porsche_1.jpg" />
+    <userInterface showZoomButtons="true" showToolTips="true" showHotspotsButton="true" showFullScreenButton="true" showTogglePlayButton="true" showArrows="true" toolbarAlign="center" toolbarBackColor="transparent" toolbarHoverColor="#808285" toolbarForeColor="#F1EFE2" toolbarBackAlpha="0" toolbarAlpha="1" showProgressNumbers="true" showFullScreenToolbar="true" progressLoopColor="#e8e8e8" progressNumColor="#949494" fullScreenBackColor="#FFFFFF" />
+    <control dragSpeed="0.13" maxZoom="200" maxZoomFullScreen="200" fullScreenStretch="100" doubleClickZooms="true" disableMouseControl="false" showHighresOnFullScreen="true" mouseHoverDrag="false" hideHotspotsOnLoad="false" hideHotspotsOnZoom="true" />
+    <rotation firstImage="0" rotate="false" rotatePeriod="7" bounce="false" rotateDirection="-1" forceDirection="false" inertiaRelToDragSpeed="true" inertiaTimeToStop="700" inertiaMaxInterval="120" useInertia="true" />
+  </settings>
+  <hotspots />
+  <images>
+    <image src="images/Porsche_1.jpg" />
+    <image src="images/Porsche_2.jpg" />
+    <image src="images/Porsche_3.jpg" />
+    <image src="images/Porsche_4.jpg" />
+    <image src="images/Porsche_5.jpg" />
+    <image src="images/Porsche_6.jpg" />
+    <image src="images/Porsche_7.jpg" />
+    <image src="images/Porsche_8.jpg" />
+    <image src="images/Porsche_9.jpg" />
+    <image src="images/Porsche_10.jpg" />
+    <image src="images/Porsche_11.jpg" />
+    <image src="images/Porsche_12.jpg" />
+    <image src="images/Porsche_13.jpg" />
+    <image src="images/Porsche_14.jpg" />
+    <image src="images/Porsche_15.jpg" />
+    <image src="images/Porsche_16.jpg" />
+    <image src="images/Porsche_17.jpg" />
+    <image src="images/Porsche_18.jpg" />
+    <image src="images/Porsche_19.jpg" />
+    <image src="images/Porsche_20.jpg" />
+    <image src="images/Porsche_21.jpg" />
+    <image src="images/Porsche_22.jpg" />
+    <image src="images/Porsche_23.jpg" />
+    <image src="images/Porsche_24.jpg" />
+    <image src="images/Porsche_25.jpg" />
+    <image src="images/Porsche_26.jpg" />
+    <image src="images/Porsche_27.jpg" />
+    <image src="images/Porsche_28.jpg" />
+    <image src="images/Porsche_29.jpg" />
+    <image src="images/Porsche_30.jpg" />
+  </images>
+</config>

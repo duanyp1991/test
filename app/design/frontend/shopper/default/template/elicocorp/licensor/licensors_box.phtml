@@ -1,0 +1,30 @@
+<div class="block block-slideshow">
+    <div class="block-title">
+        <strong>
+            <span>
+                <?php echo $this->__('Partners'); ?>
+            </span>
+        </strong>
+    </div>
+    <div class="block-content">
+        <div class="block-slider">
+            <ul class="slides">
+                <?php
+                $json = file_get_contents(IMAGE_SERVER.'partner-nb');
+                $partners = json_decode($json);
+                foreach ($partners as $partner) {
+                    $name = strtoupper(str_replace(array('-', '_'), ' ',str_replace(array('partner-', '.png'), '', $partner)));
+                    $url = str_replace('.png', '', $partner);
+                ?>
+                <li>    
+                    <a href="/<?php echo $url; ?>">
+                        <img src="<?php echo IMAGE_SERVER.$partner; ?>" alt="" class="licensor-box-img" />
+                        <h5 class="partner-box-title"><?php echo $name; ?></h5>
+                    </a>
+                </li>
+                <?php }
+                ?>
+            </ul>
+        </div>
+    </div>
+</div>

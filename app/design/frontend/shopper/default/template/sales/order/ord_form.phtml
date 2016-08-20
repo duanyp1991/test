@@ -1,0 +1,18 @@
+<?php if ('sales_order' == Mage::app()->getRequest()->getControllerName() ): ?>
+<tr>
+    <td class="label"><label for="created_by">Created By</label></td>
+    <td class="value">
+        <form action="<?php echo $this->getFormUrl(); ?>" method="post" id="ord_form">
+            <input type="hidden" name="form_key" value="<?php echo $this->getFormKey(); ?>" />
+            <input type="hidden" name="token" value="<?php echo $this->getToken(); ?>" />  
+            <div class="">
+                <input type="text" class="input-text" name="created_by" value="<?php echo $this->getOrder()->getData('created_by'); ?>" style="width:150px; float:left; display:inline;" />
+                <button onclick="editForm.submit()" style="float:left;margin:3px 10px 0;">Update</button>  
+            </div> 
+        </form>
+        <script type="text/javascript">
+            editForm = new varienForm('ord_form');
+        </script>
+    </td>
+</tr>
+<?php endif; ?>

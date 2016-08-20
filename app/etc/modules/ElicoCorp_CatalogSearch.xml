@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+         <modules>
+                <ElicoCorp_CatalogSearch>
+                        <active>true</active>
+                        <codePool>local</codePool>
+                </ElicoCorp_CatalogSearch>
+         </modules>
+</config>

@@ -1,0 +1,79 @@
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Queldorei_Navigation_Block_Navigation
+ */
+?>
+<?php
+/**
+ * $this->renderCategoriesMenuHtml() supports optional arguments:
+ * int Level number for list item class to start from
+ * string Extra class of outermost list items
+ * string If specified wraps children list in div with this class
+ */
+?>
+<!-- navigation BOF -->
+<?php $_menu = $this->renderCategoriesMenuHtml(0, 'level-top', 'sub-wrapper' ) ?>
+<?php if($_menu): ?>
+<div class="nav-container">
+    <div class="nav-top-title"><div class="icon"><span></span><span></span><span></span></div><a href="#"><?php echo $this->__('Navigation'); ?></a></div>
+    <?php 
+    $yom = Mage::getModel('cms/block')
+        ->setStoreId( Mage::app()->getStore()->getId() )
+        ->load('shopper_navigation_block');
+    ?>
+    <ul id="queldoreiNav">
+	    <?php if (Mage::getStoreConfig('shoppersettings/navigation/home')): ?>
+         <?php $_anyActive = false; foreach ($this->getStoreCategories() as $_category) { $_anyActive = $_anyActive || $this->isCategoryActive($_category); }
+         if (strpos(Mage::helper('core/url')->getCurrentUrl(),'search') != false ) {
+            $_anyActive = true;
+        ?>
+            <script type="text/javascript">
+                jQuery(document).ready(function () {
+                    jQuery('#queldoreiNav li').eq(1).addClass('active');
+                });
+            </script>
+        <?php
+         } elseif (strpos(Mage::helper('core/url')->getCurrentUrl(),'about_us') != false || strpos(Mage::helper('core/url')->getCurrentUrl(),'contacts') != false ) {
+            $_anyActive = true;
+        ?>
+            <script type="text/javascript">
+                jQuery(document).ready(function () {
+		    jQuery('#queldoreiNav li a[href="'+window.location.href.replace('_', '-')+'.html"]').parent('li').addClass('active');
+                });
+            </script>
+        <?php
+         }
+        ?>
+         <li class="level0 level-top <?php echo !$_anyActive ? 'active' : '' ?>">
+         	<a href="<?php echo $this->getBaseUrl(); ?>"><span><?php echo $this->__('Home'); ?></span></a>
+         </li>
+     <?php endif; ?>
+        <?php
+        echo $_menu;
+        
+        $custom_tab = Mage::getModel('cms/block')
+	        ->setStoreId( Mage::app()->getStore()->getId() )
+	        ->load('shopper_navigation_block');
+        if($custom_tab->getIsActive()) {
+            echo '
+            <li class="level0 level-top parent custom-block">
+                <a href="#" class="level-top">
+                    <span>'.$custom_tab->getTitle().'</span>
+                </a>
+                <div class="sub-wrapper" style="width:'.Mage::getStoreConfig('shoppersettings/navigation/custom_block_width').'px">'.$this->getLayout()->createBlock('cms/block')->setBlockId('shopper_navigation_block')->toHtml().'</div>
+            </li>';
+        }
+        ?>
+        <?php
+            $custom_page = Mage::getModel('cms/page')
+                ->setStoreId( Mage::app()->getStore()->getId() )
+                ->load('partners');
+        ?>
+        <!--<li class="level0 level-top"><a href="<?php echo $this->getBaseUrl().$custom_page->getIdentifier(); ?>" class="level-top"><span><?php echo $custom_page->getTitle(); ?></span></a></li>-->
+        <li class="level0 level-top <?php if(strpos(Mage::helper('core/url')->getCurrentUrl(),'contacts') != false){ echo 'active'; } ?>"><a href="<?php echo $this->getBaseUrl().'/contacts'; ?>" class="level-top"><span><?php echo $this->__('Contact us'); ?></span></a></li>
+    </ul>
+</div>
+<?php endif ?>
+<!-- navigation EOF -->

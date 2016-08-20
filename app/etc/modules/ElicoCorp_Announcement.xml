@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<ElicoCorp_Announcement>
+			<active>true</active>
+			<codePool>local</codePool>
+		</ElicoCorp_Announcement>
+	</modules>
+</config>

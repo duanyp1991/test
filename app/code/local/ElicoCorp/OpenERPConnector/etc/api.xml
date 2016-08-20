@@ -1,0 +1,111 @@
+<config>
+    <api>
+        <resources>
+            <ec_cart translate="title" module="checkout">
+                <title>Cart API Resource</title>
+                <model>ElicoCorp_OpenERPConnector_Model_Cart_Api</model>
+                <acl>cart</acl>
+                <methods>
+                    <search translate="title" module="checkout">
+                        <title>Retrieve Carts</title>
+                        <method>search</method>
+                    </search>
+                    <info translate="title" module="checkout">
+                        <title>Enumerate websites</title>
+                        <method>info</method>
+                    </info>
+                    <create translate="title" module="checkout">
+                        <title>Create Cart</title>
+                        <method>create</method>
+                        <acl>cart/create</acl>
+                    </create>
+                    <update translate="title" module="checkout">
+                        <title>Update Cart</title>
+                        <method>update</method>
+                        <acl>cart/update</acl>
+                    </update>
+                </methods>
+                <faults module="checkout">
+                    <data_invalid>
+                        <code>100</code>
+                        <message>Cart creation failed due to invalid data.</message>
+                    </data_invalid>
+                    <filters_invalid>
+                        <code>101</code >
+                        <message>Invalid filters specified. Details in error message.</message>
+                    </filters_invalid>
+                </faults>
+            </ec_cart>
+            <ec_wishlist translate="title" module="checkout">
+                <title>Wishlist API Resource</title>
+                <model>ElicoCorp_OpenERPConnector_Model_Wishlist_Api</model>
+                <acl>wishlist</acl>
+                <methods>
+                    <search translate="title" module="checkout">
+                        <title>Retrieve Wishlists</title>
+                        <method>search</method>
+                    </search>
+                    <info translate="title" module="checkout">
+                        <title>Enumerate websites</title>
+                        <method>info</method>
+                    </info>
+                    <create translate="title" module="checkout">
+                        <title>Create Wishlist</title>
+                        <method>create</method>
+                        <acl>wishlist/create</acl>
+                    </create>
+                    <update translate="title" module="checkout">
+                        <title>Update Wishlist</title>
+                        <method>update</method>
+                        <acl>wishlist/update</acl>
+                    </update>
+                </methods>
+                <faults module="checkout">
+                    <data_invalid>
+                        <code>100</code>
+                        <message>Wishlist creation failed due to invalid data.</message>
+                    </data_invalid>
+                    <filters_invalid>
+                        <code>101</code >
+                        <message>Invalid filters specified. Details in error message.</message>
+                    </filters_invalid>
+                </faults>
+            </ec_wishlist>
+            <ec_mwishlist translate="title" module="checkout">
+                <title>Wishlist API Resource</title>
+                <model>ElicoCorp_OpenERPConnector_Model_Mwishlist_Api</model>
+                <acl>wishlist</acl>
+                <methods>
+                    <search translate="title" module="checkout">
+                        <title>Retrieve Wishlists</title>
+                        <method>search</method>
+                    </search>
+                    <info translate="title" module="checkout">
+                        <title>Enumerate websites</title>
+                        <method>info</method>
+                    </info>
+                    <create translate="title" module="checkout">
+                        <title>Create Wishlist</title>
+                        <method>create</method>
+                        <acl>wishlist/create</acl>
+                    </create>
+                    <update translate="title" module="checkout">
+                        <title>Update Wishlist</title>
+                        <method>update</method>
+                        <acl>wishlist/update</acl>
+                    </update>
+                </methods>
+                <faults module="checkout">
+                    <data_invalid>
+                        <code>100</code>
+                        <message>Wishlist creation failed due to invalid data.</message>
+                    </data_invalid>
+                    <filters_invalid>
+                        <code>101</code >
+                        <message>Invalid filters specified. Details in error message.</message>
+                    </filters_invalid>
+                </faults>
+            </ec_mwishlist>
+        </resources>       
+    </api>
+</config>

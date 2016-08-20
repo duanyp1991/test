@@ -1,0 +1,94 @@
+/**
+ * File for custom CSS. You can use it to override the default styling of the theme.
+ *
+ * 1. Copy the file "default.override.css" and rename it to "override.css".
+ * 2. Enable it in the admin panel.
+ *
+ */
+.col-main{
+    /*margin-top: 90px;*/
+}
+.customer_search{
+    margin-top: 88px;
+}
+.input-box{
+    margin:5px 0px;
+}
+.input-box select{
+    margin-left: 5px;
+}
+#sub_button{
+    font-size: 16px;
+    margin-left: 100px;
+    margin-top: 20px;
+}
+.search_condition{
+    width: 200px;
+    height: 12px;
+    display: inline-block;
+    padding-left: 6px;
+}
+.input-box select{
+    width: 100%;
+}
+
+#overlay {
+    position: fixed;
+    z-index: 100;
+    opacity: 0.8;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000 url(../images/ajax-loader.gif) no-repeat center;
+}
+
+.licensor-box-content, .licenses-div {
+    text-align: center;
+}
+
+.licensor-box-img {
+    width: 100%;
+}
+
+.licenses-img {
+    max-width: 150px;
+}
+
+.licensor-box-title {
+    margin-top: 5px;
+}
+
+.licensor-table {
+   width: 100%;
+   text-align: justify;
+}
+
+.licensor-table td:first-child {
+    width: 30%;
+}
+
+.licensor-table td:last-child {
+    width:70%;
+}
+
+.licensor-table img {
+    width: 250px;
+}
+
+.quick-view {
+    display:none !important;
+}
+
+h1, h2, h3, h4, .level0 a span {
+  word-spacing: 5px;
+  font-weight: 600 !important;
+}
+
+#category-img {
+    display:none;
+}
+
+#wishlist-no-product {
+    display: none;
+}

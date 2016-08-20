@@ -1,0 +1,37 @@
+/<?php
+$categ_ids = array(34,30,32);
+
+$products = array();
+foreach($categ_ids as $categ_id) {
+	$category = new Mage_Catalog_Model_Category();
+	$category->load($categ_id);
+	$collection = $category->getProductCollection();
+	$collection->addAttributeToSelect('name','sku');
+	if(count($collection) > 0){
+		$products = $collection;
+		break;
+	}
+}
+?>
+<ul class="slides">
+<?php
+// foreach ($collections as $collection):
+	foreach($collection as $_product): ?>
+		<li>
+			<p class="mmx_slider">
+				<strong><?php echo $_product->getSku(); ?></strong>
+				<?php echo $_product->getName(); ?>
+			</p>
+			<?php 
+			$imgX= 230;
+			$imgY = 230;
+			?>
+			<img src="<?php echo $_product->getCustomImageUrl(); ?>" width="'<?php echo $imgX; ?>" height="<?php echo $imgY; ?>" />
+			<button class="button button_white" onclick="window.location='<?php echo $_product->getProductUrl(); ?>'">
+				<span><span>Learn more</span></span>
+			</button>
+		</li>
+	<?php endforeach; 
+	// endforeach;
+	?>
+</ul>

@@ -1,0 +1,95 @@
+<?php 
+/**
+ * ITORIS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the ITORIS's Magento Extensions License Agreement
+ * which is available through the world-wide-web at this URL:
+ * http://www.itoris.com/magento-extensions-license.html
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to sales@itoris.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade the extensions to newer
+ * versions in the future. If you wish to customize the extension for your
+ * needs please refer to the license agreement or contact sales@itoris.com for more information.
+ *
+ * @category   ITORIS
+ * @package    ITORIS_MWISHLIST
+ * @copyright  Copyright (c) 2012 ITORIS INC. (http://www.itoris.com)
+ * @license    http://www.itoris.com/magento-extensions-license.html  Commercial License
+ */
+?>
+<?php
+$this->version = Mage::getVersion();
+$view = 'wishlist-view';
+$mlnameclass = 'wlname';
+if ((int)$this->version[2] < 4):
+	?>
+<div class="page-title title-buttons" id="title">
+	<div style="display: none;" id="loading-mask">
+		<?php echo $this->__('Please wait...') ?>
+	</div>
+	<?php if ($this->helper('wishlist')->isRssAllow() && $this->hasWishlistItems()): ?>
+	<a href="<?php echo $this->helper('wishlist')->getRssUrl(); ?>"
+	   class="link-rss"><?php echo $this->__('RSS Feed') ?></a>
+	<?php endif; ?>
+	<div id="fullhead">
+		<table width="100%">
+			<tbody>
+			<tr>
+				<td>
+					<div id="headtext"><?php echo $this->__('Reservation / Wishlist') ?></div>
+				</td>
+
+
+			</tr>
+			</tbody>
+		</table>
+
+
+	</div>
+</div>
+<?php else: ?>
+
+<div class="page-title title-buttons" id="title">
+	<div style="display: none;" id="loading-mask">
+		<?php echo $this->__('Please wait...') ?>
+	</div>
+	<?php if ($this->helper('wishlist')->isRssAllow() && $this->hasWishlistItems()): ?>
+	<a href="<?php echo $this->helper('wishlist')->getRssUrl(); ?>"
+	   class="link-rss"><?php echo $this->__('RSS Feed') ?></a>
+	<?php endif; ?>
+	<h1><?php echo $this->__('Reservation / Wishlist') ?></h1>
+</div>
+
+
+<?php endif ?>
+
+<script type="text/javascript">
+	
+	function InputHelperIn(obj, text) {
+		if (obj.value == text) {
+			obj.style.fontStyle = "normal";
+			obj.style.color = "#2F2F2F";
+			obj.value = "";
+		}
+	}
+	function InputHelperDefault(obj, text) {
+		if (obj.value != '') {
+			obj.style.fontStyle = "italic";
+			obj.style.color = "#bfc1b8";
+			obj.value = text;
+		}
+	}
+	function InputHelperOut(obj, text) {
+		if (obj.value == '' || obj.value == text) {
+			obj.style.fontStyle = "italic";
+			obj.style.color = "#bfc1b8";
+			obj.value = text;
+		}
+	}
+</script>

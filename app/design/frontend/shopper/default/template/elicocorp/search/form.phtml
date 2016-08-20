@@ -1,0 +1,218 @@
+<div class="block">
+    <div class="block-title">
+        <strong>
+            <span>
+                <?php echo $this->__('Our Range'); ?>
+            </span>
+        </strong>
+    </div>
+    <div class="block-content">
+        <?php echo Mage::app()->getStore(); ?>
+        <form id="elico_search">
+                <?php
+            $category = Mage::getModel('catalog/category')->load(50);
+            $category_ids = explode(',', $category->getChildren());
+            ?>
+                <div class="input-box">
+                <label class="search_condition">Category</label>
+                        <select name="category" id="category" class="ajax_field">
+                                <?php
+                                foreach($category_ids as $cat_id) { ?>
+                                        <?php echo $cat_id; ?>
+                                        <?php $cat = Mage::getModel('catalog/category')->load($cat_id);
+                                            $selected = '';
+                                            if(isset($_GET['category'])) {
+                                                if($_GET['category'] == $cat->getId()) {
+                                                    $selected = 'selected="selected"';
+                                                }
+                                            }
+                                        ?>
+                                        <option <?php echo $selected; ?> value="<?php echo $cat->getId() ?>"><?php echo $cat->getName(); ?></option>
+                                <?php }
+                                ?>
+                        </select>
+                </div>
+            <?php
+            $fields = unserialize(SEARCH_FIELDS);
+            foreach($fields as $field) {
+                echo $this->getChild('field')->setData('field_name', $field)->toHtml();
+            }
+            ?>
+            <button type="button" id="sub_button"  class="button" style="float:left;display:none;">
+                <span>
+                    <span><?php echo $this->__('Search'); ?></span>
+                </span>
+            </button>
+        </form>
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                    jQuery('<div id="overlay"/>').hide().appendTo('body');
+
+		    function hide_empty_fields() {
+		       	    jQuery('#elico_search select').show();
+			    jQuery('#elico_search label').show();
+			    
+                            jQuery.each(jQuery('#elico_search select'), function (k, v) { 
+                                if(jQuery(v).children('option').size() < 2) {
+                                    if(jQuery(v).prev('label').size() == 1) {
+                                        jQuery(v).prev('label').hide();
+                                    }
+                                    jQuery(v).hide();
+                                }
+                            });
+		    }
+                    function ajax_field_change(event) {
+                        jQuery('#overlay').show();
+                        var self = jQuery(event["srcElement"]);
+			if(jQuery(self).attr('id') == 'category') {
+				jQuery('.ajax_field option:selected:not(:first)').removeAttr("selected");
+			}
+                        var form_data = ""
+                        if(jQuery('.pager .pages li.current') !== undefined) {
+                                jQuery('.pager .pages li.current').removeClass('current');
+                        }
+                        jQuery('#elico_search select').each(function(){ 
+                            if(jQuery(this).val() == "" || jQuery(this).val() == null || /-- All/i.test(jQuery(this).val()))
+                                return true;
+                            if(form_data != "")
+                                form_data += "&";
+                            form_data += jQuery(this).attr('name') + '=' + jQuery(this).val().replace(/ /g, '+');
+                        });
+                        jQuery.post('<?php echo Mage::getUrl('search/index/options', array('_forced_secure' => true)); ?>', form_data, function(json) { 
+                            data = jQuery.parseJSON(json);
+                            jQuery('.ajax_field').each(function(){ 
+                                var field_name = jQuery(this).attr('name');
+                                val = jQuery('#'+ field_name).val();
+                                if(jQuery(self).attr('name') == field_name || field_name == 'category') {
+                                    return true;
+                                }
+                                options = '<option value="">'+data[field_name]['default']+'</option>';
+                                jQuery.each(data[field_name], function(key, value){
+                                    if(key == "default") {
+                                        return true;
+				    }
+                                    options += '<option value="'+key+'">'+value+'</option>';
+                                });
+                                jQuery('#'+ field_name).html(options);
+                                if(jQuery("#"+field_name+" option[value='"+val+"']").length !== 0) {
+                                   jQuery('#'+ field_name).val(val); 
+                                }
+                            });
+
+			    	if(jQuery(self).attr('id') == 'category') {
+			         	hide_empty_fields();
+			        }
+                            jQuery('#sub_button').click();
+
+                        })
+                    }
+
+                    jQuery('body').on('change', '.ajax_field', ajax_field_change);
+                    jQuery('body').on('change', '.pager select', function(){
+                        jQuery('#overlay').show();
+                        jQuery('#sub_button').click();
+                    });
+
+                    jQuery('body').on('click', '.pager .pages li', function() {
+                        jQuery('#overlay').show();
+                        var current = jQuery('.pager .pages li.current')
+			current.removeClass('current');
+			if(jQuery(this).children('a').children('img').length == 1) {
+				if(jQuery(this).children('a').html().indexOf('right') != -1)
+			 		current.next().addClass('current');
+				else
+					current.prev().addClass('current');
+			} else
+	                        jQuery(this).addClass('current');
+                        jQuery('#sub_button').click();
+                    });
+
+                    function ajax_toolbar_switch(obj, field) {
+                        jQuery(obj).siblings('li.selected').removeClass("selected");
+                        jQuery(obj).addClass("selected");
+                        select = jQuery('.toolbar-switch.'+field+' select');
+                        jQuery(select).children('option').each(function() {
+                            if(jQuery(this).text() == jQuery(obj).text()) {
+                                jQuery(select).children('option:selected').removeAttr('selected');
+                                jQuery(select).children('option[value="'+jQuery(this).val()+'"]').attr('selected', 'selected');
+                            }
+                        })
+                        jQuery('#sub_button').click();
+                    }
+
+                    jQuery('body').on('click', '.toolbar-switch.sort-by li', function() {
+                        ajax_toolbar_switch(this, "sort-by");
+                    });
+
+                    jQuery('body').on('click', '.toolbar-switch.limiter li', function() {
+                        ajax_toolbar_switch(this, "limiter");
+                    });
+
+                    jQuery('body').on('click', '.view-mode a', function(e) {
+                        e.preventDefault();
+                        window.view_mode = jQuery(this).attr("class");
+                        jQuery('#sub_button').click();
+                        return false;
+                    });
+
+                    jQuery('body').on('click', '.sort-order a', function(e) {
+                        e.preventDefault();
+                        val = jQuery('.sort-order a').attr("href").split('?').last().split('&').first().split('=').last();
+                        window.sort_order = val;
+                        jQuery('#sub_button').click();
+                        return false;
+                    });
+
+                    jQuery('#sub_button').on('click', function() {
+                        var data =  jQuery("#elico_search :input[value!='']").serialize();
+                        if(jQuery('.toolbar-switch.limiter select').val() !== undefined){
+                            data += '&limit=' + jQuery('.toolbar-switch.limiter select').val();
+                        } else {
+                            data += '&limit=' + <?php echo (empty($_GET['limit'])) ? 15 : $_GET['limit'];?>;
+                        }
+
+                        if(jQuery('.view-mode ').attr("class") !== undefined){
+                            data += '&order=' + jQuery('.toolbar-switch.sort-by select').val();
+                        } else {
+                            var order = "<?php echo (empty($_GET['order'])) ? 'position' : $_GET['order'];?>";
+                            data += '&order=' + order;
+                        }
+
+                        if(window.view_mode  !== undefined){
+                            data += '&mode=' + window.view_mode;
+                        }
+
+                        if(window.sort_order  !== undefined){
+                            data += '&dir=' + window.sort_order;
+                        }
+
+                        if(jQuery('.pager .pages li.current') !== undefined) {
+                            var pagerdata = (jQuery('.pager .pages li.current a').html() == undefined) ? "<?php echo $_GET['p'];?>" : jQuery('.pager .pages li.current a').html();
+                            data += '&p=' + pagerdata;				
+                        }
+
+                        jQuery.post('<?php echo Mage::getUrl('search/index/list',  array('_forced_secure' => true)); ?>', data, function(data) {
+                            jQuery('#result').html(data);
+			    var driver = jQuery('#x_mmx_driver');
+			    var driver_option = driver.children('option[value!=""]');
+			    driver_option.sort(function(a,b){
+					var an = jQuery(a).text().substring(3).toLowerCase();
+				        var bn = jQuery(b).text().substring(3).toLowerCase();
+
+					if(an > bn) {
+						return 1;
+					}
+					if(an < bn) {
+						return -1;
+					}
+					return 0;
+				});
+			    driver_option.detach().appendTo(driver);
+                            jQuery('#overlay').hide();
+                        })
+                    });
+                    jQuery("#category").trigger('change');
+            });
+        </script>
+    </div>
+</div>
